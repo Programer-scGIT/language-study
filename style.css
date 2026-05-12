@@ -1,0 +1,767 @@
+:root {
+    /* Цвета для ТЕМНОЙ темы (по умолчанию) */
+    --icon-color: #ffffff;
+}
+
+body.light-theme {
+    /* Цвета для СВЕТЛОЙ темы */
+    --icon-color: #000000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ================= COLORS ================= */
+:root {
+    --bg: #ffffff;
+    --text: #111;
+    --green: #2ecc71;
+    --card: #f4f4f4;
+    --btn-hover: #27ae60;
+    --btn-active: #219150;
+}
+
+body.dark {
+    --bg: #111111;
+    --text: #ffffff;
+    --card: #1e1e1e;
+    --btn-hover: #1f7a3b;
+    --btn-active: #166a2f;
+}
+
+/* ================= BODY ================= */
+body {
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ================= HEADER ================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2ecc71; /* Твой зеленый цвет */
+    position: relative;
+}
+
+.settings-container {
+    position: relative;
+}
+
+/* Стили главной шестеренки */
+#settingsBtn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Выпадающее меню (изначально скрыто) */
+.hidden-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+/* Класс, который JS будет добавлять для показа меню */
+.hidden-menu.active {
+    display: block;
+}
+
+/* Кнопка внутри меню */
+#themeBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#themeBtn:hover {
+    background-color: #555;
+}
+
+/* ================= CARD ================= */
+.card {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ================= BUTTONS ================= */
+button {
+    padding: 12px 16px;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    background: var(--green);
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.15s ease;
+    transform: scale(1);
+}
+
+/* hover эффект */
+button:hover {
+    background: var(--btn-hover);
+    filter: brightness(1.05);
+}
+
+/* нажатие */
+button:active {
+    transform: scale(0.94);
+    background: var(--btn-active);
+    filter: brightness(0.9);
+}
+
+/* ================= ANSWERS ================= */
+#answers button {
+    display: block;
+    width: 90%;
+}
+
+/* ================= INPUT ================= */
+input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border 0.2s ease;
+}
+
+input:focus {
+    border-color: var(--green);
+    outline: none;
+}
+
+/* ================= PROGRESS ================= */
+.progress {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0 0 15px 0;
+
+    font-size: clamp(18px, 4vw, 24px);
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+}
+
+/* ================= RESULT ================= */
+#result {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 12px;
+    min-height: 24px;
+    transition: color 0.2s ease;
+    text-align: center;
+}
+
+/* ================= LANG BUTTONS ================= */
+.langBtn {
+    padding: 10px 16px;
+    margin: 4px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    background: var(--green);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.langBtn:hover {
+    background: var(--btn-hover);
+}
+
+.langBtn:active {
+    background: var(--btn-active);
+    transform: scale(0.95);
+}
+
+/* ================= THEME BUTTON ================= */
+#themeBtn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--green);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+#themeBtn:hover {
+    background: var(--btn-hover);
+}
+
+#themeBtn:active {
+    background: var(--btn-active);
+    transform: scale(0.95);
+}
+/* ================= ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ================= */
+
+.lang-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#textInput {
+    margin: 20px 0 12px 0;
+}
+
+.progress {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Анимация появления */
+.card {
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.langBtn {
+    padding: 14px 16px;
+    font-size: 17px;
+    text-align: left;
+}
+
+.speak-btn, .hint-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 4px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.speak-btn:hover { background: rgba(34, 197, 94, 0.2); }
+.hint-btn:hover { background: rgba(245, 158, 11, 0.2); }
+
+h1 {
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-blur {
+    color: transparent;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* ================= FOOTER ================= */
+.footer-text {
+    text-align: center;      /* Центрируем текст */
+    padding: 20px 0;         /* Делаем отступы сверху и снизу */
+    margin-top: auto;        /* Помогает прижать к низу, если контента мало */
+    font-size: 14px;         /* Размер шрифта */
+    color: var(--text);      /* Используем вашу переменную цвета текста */
+    opacity: 0.6;            /* Делаем текст чуть бледнее, чтобы не отвлекал */
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center; /* Выравнивает лампочку строго по центру инпута */
+    gap: 10px;
+}
+
+#textInput {
+    flex: 1; /* Позволяет инпуту занимать всё место, кроме ширины лампочки */
+}
+
+
+#textInput {
+    flex: 1; /* Заставляет инпут занять всё свободное место */
+    margin-top: 0 !important; /* Убираем лишний отступ сверху */
+}
+
+.mascot-container {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9999;
+
+    pointer-events: none;
+}
+/* 1. Общие стили для контейнера */
+.footer-icons {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 9999;
+    align-items: center;
+}
+
+/* 2. Базовые стили для иконок */
+.footer-icons svg,
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+/* 3. Эффект наведения */
+.footer-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* 1. По умолчанию (СВЕТЛАЯ ТЕМА) GitHub чёрный */
+.footer-icons a[title="GitHub"] svg path {
+    fill: #000000;
+}
+
+/* 2. Если у body есть класс .dark (ТЁМНАЯ ТЕМА), GitHub становится белым */
+body.dark .footer-icons a[title="GitHub"] svg path {
+    fill: #ffffff;
+}
+
+/* 3. WebStorm всегда использует свой градиент */
+.footer-icons a[title="WebStorm"] svg path {
+    fill: url(#jb_grad) !important;
+}
+@media (max-width: 768px) {
+    /* 1. Уменьшаем заголовок, чтобы он не занимал весь экран */
+    header h1 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    /* 2. Делаем карточку квиза шире (на весь экран с отступами) */
+    .card {
+        width: 95%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    /* 3. Кнопки языков: делаем их крупнее, чтобы удобно было тыкать пальцем */
+    .langBtn {
+        width: 100%; /* Каждая кнопка на всю ширину */
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    /* 4. Скрываем или уменьшаем иконки в углу, чтобы не мешали */
+    .footer-icons {
+        left: 10px;
+        bottom: 10px;
+        gap: 10px;
+    }
+
+    .footer-icons svg, .footer-icons img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* 5. Поле ввода для квиза на весь экран */
+    #textInput {
+        width: 100%;
+        font-size: 16px; /* Важно: 16px, чтобы iPhone не зумил экран при вводе */
+    }
+}
+@media (max-width: 600px) {
+    /* 1. Уменьшаем шапку, чтобы она не была такой массивной */
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.1rem; /* Уменьшаем размер текста заголовка */
+    }
+
+    /* 2. Делаем основную карточку чуть компактнее */
+    .card {
+        margin: 10px;
+        padding: 15px;
+        width: auto; /* Чтобы она не вылезала за края */
+    }
+
+    @media (max-width: 600px) {
+        /* ... твои стили для header и card оставляем ... */
+
+        /* 3. Улучшенный футер для телефона */
+        .footer-text {
+            font-size: 9px;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            /* Делаем так, чтобы текст не лез под иконки */
+            display: block;
+            width: 100%;
+        }
+
+        /* 4. Иконки на мобилках лучше закрепить чуть иначе */
+        .footer-icons {
+            position: relative; /* На телефоне пусть будут под текстом, а не поверх него */
+            justify-content: center;
+            margin-bottom: 20px;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+
+    .footer-icons svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.question-animate {
+    animation: fadeIn 0.4s ease-out;
+}
+/* Анимация появления вопроса */
+@keyframes questionFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Легкий выезд снизу */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-animate {
+    /* 0.8s — достаточно плавно, чтобы глаз успел заметить */
+    animation: questionFade 0.8s ease-out forwards;
+}
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: var(--green);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-btn:hover {
+    color: #4ade80;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+.h1 {
+    transform: translate(45px) scale(1.5);
+}
+.card {
+    background: rgba(255, 255, 255, 0.05); /* полупрозрачный фон */
+    backdrop-filter: blur(10px);          /* эффект матового стекла */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* глубокая тень */
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.langBtn {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.langBtn:hover {
+    transform: translateY(-3px); /* кнопка чуть приподнимается */
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* мягкое зеленое свечение */
+    border-color: rgba(76, 175, 80, 0.8);
+    background-color: rgba(76, 175, 80, 0.1);
+}
+.h1 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px; /* чуть раздвинем буквы для стиля */
+}
+#textInput:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* синее свечение при фокусе */
+    border-color: #007bff;
+}
+.fireflies-container {
+    position: fixed;
+    right: 0;
+    top: 30%; /* Сделаем область чуть выше */
+    width: 300px; /* Сделаем область пошире */
+    height: 400px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #FFD700; /* Золотистый цвет */
+    border-radius: 50%;
+    filter: blur(1px);
+    box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    opacity: 0;
+    animation: fly 8s infinite ease-in-out;
+}
+
+
+/* Сами светлячки */
+.firefly {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #aaff00; /* Цвет светлячка (зеленоватый) */
+    border-radius: 50%;
+    filter: blur(2px);
+    box-shadow: 0 0 10px #aaff00, 0 0 20px #aaff00;
+    opacity: 0;
+    animation: fly 6s infinite ease-in-out;
+}
+
+/* Разные задержки и позиции для хаотичности */
+.firefly:nth-child(1) { top: 20%; right: 10%; animation-delay: 0s; }
+.firefly:nth-child(2) { top: 50%; right: 30%; animation-delay: 1.5s; animation-duration: 8s; }
+.firefly:nth-child(3) { top: 80%; right: 15%; animation-delay: 3s; animation-duration: 7s; }
+.firefly:nth-child(4) { top: 40%; right: 50%; animation-delay: 4.5s; }
+
+/* ================== ПОЛНЫЙ БЛОК СВЕТЛЯЧКОВ И ТЕКСТА (С ПЛАВНОСТЬЮ) ================== */
+
+/* 1. Анимация полета */
+@keyframes fly {
+    0% { transform: translate(0, 0) scale(1); opacity: 0; }
+    50% { transform: translate(-30px, -40px) scale(1.2); opacity: 0.8; }
+    100% { transform: translate(-60px, 20px) scale(1); opacity: 0; }
+}
+
+/* 2. Логика видимости (через прозрачность для плавности) */
+body {
+    --f-opacity: 0;         /* Скрыто в светлой теме */
+    --f-visibility: hidden;
+}
+
+body.dark {
+    --f-opacity: 1;         /* Видно в темной теме */
+    --f-visibility: visible;
+}
+
+/* 3. Контейнер (управляет плавным появлением всей области) */
+.fireflies-container {
+    opacity: var(--f-opacity) !important;
+    visibility: var(--f-visibility) !important;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s !important; /* Плавное таяние */
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* 4. Сами светлячки */
+.firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    animation: fly 8s infinite ease-in-out;
+}
+
+/* 5. Мотивирующий текст */
+.firefly-text {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff !important; /* Всегда белый, т.к. виден только на темном */
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: right;
+    max-width: 250px;
+    line-height: 1.4;
+    z-index: 1010;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8), 0 0 10px rgba(170, 255, 0, 0.3);
+}
+
+.firefly-text span {
+    display: block;
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+    .firefly-text {
+        display: none !important;
+    }
+}
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+    /* 1. Делаем меню настроек пошире и аккуратнее */
+    #settingsMenu {
+        width: 90% !important;
+        max-width: 320px;
+        padding: 15px !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Строго по центру экрана */
+    }
+
+    /* 2. Увеличиваем расстояние между кнопками, чтобы было удобно тыкать пальцем */
+    #settingsMenu button {
+        width: 100% !important;
+        margin: 10px 0 !important;
+        padding: 12px !important;
+        font-size: 1rem !important;
+    }
+
+    /* 3. Прячем футер и иконки, когда открыты настройки, чтобы не было каши */
+    body.settings-open .footer-text,
+    body.settings-open .footer-icons {
+        display: none;
+    }
+
+    /* 4. Заголовок чуть поменьше, чтобы не занимал пол-экрана */
+    .h1 {
+        font-size: 1.5rem !important;
+    }
+}
+/* Эффект размытия фона при открытых настройках */
+body.modal-open > *:not(#settingsModal) {
+    filter: blur(5px);
+    pointer-events: none; /* Чтобы нельзя было кликнуть мимо кнопок */
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 480px) {
+    #settingsModal {
+        width: 85% !important; /* На весь экран по ширине */
+        padding: 20px !important;
+        min-width: unset !important; /* Убираем жесткое ограничение */
+    }
+
+    #settingsModal button {
+        display: block;
+        width: 100%; /* Кнопки во всю ширину одна под другой */
+        margin: 10px 0 !important;
+        padding: 14px !important;
+        font-size: 1rem;
+    }
+}
+/* Размытие всего фона, кроме настроек */
+body.modal-open > *:not(#settingsModal) {
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+/* Адаптация для мобилок: кнопки в столбик, чтобы не слипались */
+@media (max-width: 480px) {
+    #settingsModal {
+        width: 85% !important;
+        min-width: unset !important;
+    }
+    #settingsModal button {
+        display: block;
+        width: 100%;
+        margin: 10px 0 !important;
+    }
+}
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    top: 0;
+    left: 50%;
+    pointer-events: none;
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
