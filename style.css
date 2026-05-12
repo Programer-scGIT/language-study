@@ -773,7 +773,7 @@ body.modal-open > *:not(#settingsModal) {
 
         /* Отодвигаем вправо */
         margin-left: auto;
-        margin-right: 10px; /* небольшой отступ от края экрана */
+        margin-right: 20px; /* небольшой отступ от края экрана */
 
         /* Если кнопка позиционирована абсолютно (position: absolute) */
         /* right: 5px; */
