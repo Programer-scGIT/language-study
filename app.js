@@ -510,16 +510,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
     function spawnConfetti(count = 50) {
+        const audio = new Audio('music/confetti-pop-sound.mp3');
+        audio.volume = 0.2;
+        audio.play().catch(err => console.log("Ошибка воспроизведения звука:", err));
+
         for (let i = 0; i < count; i++) {
             const confetti = document.createElement('div');
             confetti.classList.add('confetti');
-
             const colors = ['#f94144','#f3722c','#f9c74f','#90be6d','#43aa8b','#577590'];
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
             confetti.style.left = Math.random() * window.innerWidth + 'px';
-            confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
             confetti.style.width = confetti.style.height = (5 + Math.random() * 10) + 'px';
-
+            confetti.style.animationDuration = 2 + Math.random()*3 + 's';
             document.body.appendChild(confetti);
             confetti.addEventListener('animationend', () => confetti.remove());
         }
@@ -547,6 +549,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+// Фоновая музыка
+const bgMusic = document.getElementById('bg-music');
+
+// Запуск музыки при первом клике пользователя
+document.body.addEventListener('click', () => {
+    bgMusic.volume = 0.1; // громкость тише
+    bgMusic.play().catch(e => console.log("Ошибка воспроизведения фоновой музыки:", e));
+}, { once: true });
 
 
 // ================== ВЫБОР ЯЗЫКА ==================
