@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showFinalResult() {
         const percent = Math.round((score / currentQuestions.length) * 100);
-        let message = percent === 100 ? "🏆 Идеально! Ты гений! / Perfect!" :
+        let message = percent === 100 ? "🏆 Идеально! Ты гений! / Perfect! you are a genius!" :
             percent >= 80 ? "Отличный результат! 👏 / Excellent!" :
                 percent >= 55 ? "Хорошо! Продолжай учить ✊/ Good!" : "Не сдавайся! 💪 / Try again";
 
