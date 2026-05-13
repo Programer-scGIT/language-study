@@ -257,14 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// При загрузке страницы проверяем сохраненную тему
+
     if (localStorage.getItem('darkMode') === 'true') {
         setTheme(true);
     } else {
-        setTheme(false); // По умолчанию светлая, если ничего не сохранено
+        setTheme(false);
     }
 
-// Событие по клику на кнопку
+
     themeBtn.onclick = () => {
         const isDark = !document.body.classList.contains('dark');
         setTheme(isDark);
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
 
-            // Выбор языка озвучки
+
             if (currentLang === 'ru' || currentLang === 'be' || currentLang === 'tt' || currentLang === 'en') {
                 utterance.lang = 'ru-RU';
             } else if (currentLang === 'fr') utterance.lang = 'fr-FR';
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ================== НАСТРОЙКИ ==================
 
-// 1. Функция переключения музыки (добавьте её сюда)
+
     window.toggleMusic = () => {
         const audio = document.getElementById('bg-music');
         const btn = document.getElementById('musicToggleBtn');
@@ -322,18 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-// 2. Обновленная функция окна настроек
+
     function showSettings() {
         function showSettings() {
             const modal = document.createElement('div');
             const audio = document.getElementById('bg-music');
             const musicStatus = audio.paused ? "Включить музыку" : "Выключить музыку";
 
-            // Добавляем класс размытия
+
             document.body.classList.add('modal-open');
 
             modal.id = 'settingsModal';
-            // Я убрал фон из JS, чтобы он брался из CSS переменной var(--card)
+
             modal.style.cssText = `
         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
         background: var(--card); padding: 30px; border-radius: 16px; 
@@ -352,19 +352,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(modal);
         }
 
-// Обновляем закрытие
+
         window.closeSettings = () => {
             const modal = document.getElementById('settingsModal');
             if (modal) {
                 modal.remove();
-                document.body.classList.remove('modal-open'); // Убираем размытие
+                document.body.classList.remove('modal-open');
             }
         };
 
         const modal = document.createElement('div');
         const audio = document.getElementById('bg-music');
 
-        // Проверяем статус, чтобы кнопка сразу называлась правильно
+
         const musicStatus = audio.paused ? "Включить музыку" : "Выключить музыку";
 
         modal.id = 'settingsModal';
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <button onclick="setTheme(true)" style="margin: 8px; padding: 10px 20px;">Тёмная</button>
         <br><br>
         <p><strong>Звук:</strong></p>
-        <!-- Новая кнопка для музыки -->
+     
         <button id="musicToggleBtn" onclick="toggleMusic()" style="margin: 8px; padding: 10px 20px;">${musicStatus}</button>
         <br><br>
         <button onclick="closeSettings()" style="padding: 10px 25px;">Закрыть</button>
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentIndex = 0;
         score = 0;
-        mistakes = []; // Теперь это сработает, так как мы объявили переменную выше
+        mistakes = [];
 
         totalEl.textContent = currentQuestions.length;
         resultEl.innerHTML = '';
@@ -423,12 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function showQuestion() {
         const q = currentQuestions[currentIndex];
 
-        // Анимация появления
+
         quizScreen.classList.remove('question-animate');
         void quizScreen.offsetWidth;
         quizScreen.classList.add('question-animate');
 
-        // Выводим текст вопроса и кнопку озвучки
+
         questionEl.innerHTML = `
             ${q.q}
             <button onclick="speakQuestion()" class="speak-btn" title="Озвучить вопрос">🔊</button>
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function playConfettiSound() {
         const audio = new Audio('music/confetti-pop-sound.mp3');
-        audio.volume = 0.2; // громкость
+        audio.volume = 0.2;
         audio.play().catch(err => console.log("Ошибка воспроизведения звука:", err));
     }
 
@@ -452,13 +452,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isCorrect) {
             score++;
             resultEl.innerHTML = `<span style="color: var(--green);">✅ Правильно! / true! </span>`;
-            spawnConfetti(30);    // показываем конфетти
-            playConfettiSound();  // проигрываем звук
+            spawnConfetti(30);
+            playConfettiSound();
         } else {
             mistakes.push({
                 question: q.q,
                 correct: q.a[0],
-                user: userAnswer || "пусто"
+                user: userAnswer || "пусто\empty"
             });
             resultEl.innerHTML = `<span style="color: #ef4444;">❌ Неправильно / false <br>Правильно: <b>${q.a[0]}</b></span>`;
         }
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
             percent >= 80 ? "Отличный результат! 👏 / Excellent!" :
                 percent >= 55 ? "Хорошо! Продолжай учить ✊/ Good!" : "Не сдавайся! 💪 / Try again";
 
-        // Генерируем список ошибок, если они есть
+
         let mistakesHTML = '';
         if (mistakes.length > 0) {
             mistakesHTML = `
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
         settingsBtn.onclick = showSettings;
     }
 
-    // Утилита
+
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -559,10 +559,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-// Фоновая музыка
+
 const bgMusic = document.getElementById('bg-music');
 
-// Запуск музыки при первом клике пользователя
+
 document.body.addEventListener('click', () => {
     bgMusic.volume = 0.1; // громкость тише
     bgMusic.play().catch(e => console.log("Ошибка воспроизведения фоновой музыки:", e));
@@ -573,14 +573,14 @@ document.body.addEventListener('click', () => {
 document.querySelectorAll('.langBtn').forEach(btn => {
     btn.addEventListener('click', () => {
         currentLang = btn.dataset.lang;
-        document.getElementById('backBtn').style.display = "block";  // показываем кнопку
+        document.getElementById('backBtn').style.display = "block";
         startQuiz();
     });
     // Кнопка Назад
     document.getElementById('backBtn').addEventListener('click', () => {
         document.getElementById('quizScreen').classList.add('hidden');
         document.getElementById('startScreen').classList.remove('hidden');
-        document.getElementById('backBtn').style.display = "none";   // скрываем кнопку
+        document.getElementById('backBtn').style.display = "none";
     });
 });
 
@@ -588,19 +588,19 @@ document.querySelectorAll('.langBtn').forEach(btn => {
 function startQuiz() {
     startScreen.classList.add('hidden');
     quizScreen.classList.remove('hidden');
-    toggleBackButton(true);   // ← важно
+    toggleBackButton(true);
 
-    // ... остальной код startQuiz
+
 }
 
-// При возвращении на главный экран
+
 function goBackToStart() {
     quizScreen.classList.add('hidden');
     startScreen.classList.remove('hidden');
-    toggleBackButton(false);   // Скрываем кнопку назад
+    toggleBackButton(false);
 }
 
-// Обработчик кнопки Назад
+
 backBtn.addEventListener('click', goBackToStart);
 function toggleBackButton(show) {
     const backButton = document.getElementById('backBtn');
@@ -611,11 +611,11 @@ function toggleBackButton(show) {
     }
 }
 function createFireflies() {
-    // Ищем контейнер по НОВОМУ ID
+
     const container = document.getElementById('fireflies-root');
     if (!container) return;
 
-    // Очищаем старых светлячков, если они были
+
     const oldFireflies = container.querySelectorAll('.firefly');
     oldFireflies.forEach(f => f.remove());
 
@@ -634,5 +634,5 @@ function createFireflies() {
     }
 }
 
-// Запускаем создание при загрузке
+
 window.addEventListener('load', createFireflies);
