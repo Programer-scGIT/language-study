@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {q: "Translate 'they' to Russian", a: ["они"]},
             {q: "Translate 'free' to Russian", a: ["бесплатно"]},
             {q: "Translate 'weather' to Russian", a: ["погода"]},
+            {q: "Translate 'arm' to Russian", a: ["рука"]},
 
         ],
         en: [ //  Английский
@@ -58,11 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
             {q: "Переведите 'я' на английский", a: ["i"]},
             {q: "Переведите 'спасибо' на английский", a: ["Thank you", "thanks"]},
             {q: "Переведите 'ты' на английский", a: ["you", "thee"]},
+            {q: "Переведите 'работа' на английский", a: ["work"]},
+            {q: "Переведите 'изучение' на английский", a: ["studying"]},
 
         ],
         fr: [ // Французский
             {q: "Translate 'house' to French", a: ["maison"]},
-            {q: "Translate 'freedom' to French", a: ["liberté"]},
+            {q: "Translate 'freedom' to French", a: ["liberté", "liberте", "liberte"]},
             {q: "Translate 'apple' to French", a: ["pomme"]},
             {q: "Translate 'living room' to French", a: ["salon"]},
             {q: "Translate 'book' to French", a: ["livre"]},
@@ -71,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             {q: "Translate 'car' to French", a: ["voiture"]},
             {q: "Translate 'cat' to French", a: ["chat"]},
             {q: "Translate 'pen' to French", a: ["stylo"]},
+            {q: "Translate 'studying' to French", a: ["étudier", "etydje", "etyudje"]},
+            {q: "Translate 'notebook' to French", a: ["carnet de notes"]},
+            {q: "Translate 'laptop' to French", a: ["ordinateur portable"]},
+            {q: "Translate 'Go to the store' to French", a: ["Aller au magasin"]},
 
         ],
         es: [ //  Испанский
@@ -83,28 +90,30 @@ document.addEventListener('DOMContentLoaded', () => {
             {q: "Translate 'sun' to Spanish", a: ["sol"]},
             {q: "Translate 'school' to Spanish", a: ["escuela"]},
             {q: "Translate 'car' to Spanish", a: ["coche", "auto"]},
-            {q: "Translate 'tree' to Spanish", a: ["árbol"]},
+            {q: "Translate 'tree' to Spanish", a: ["árbol", "arbol"]},
+            {q: "Translate 'go to the store' to Spanish", a: ["árbol", "arbol"]},
+            {q: "Translate 'go to the store' to Spanish", a: ["ir a la tienda"]},
         ],
         sv: [ // Шведский
             {q: "Translate 'house' to Swedish", a: ["hus"]},
             {q: "Translate 'cat' to Swedish", a: ["katt"]},
             {q: "Translate 'dog' to Swedish", a: ["hund"]},
-            {q: "Translate 'apple' to Swedish", a: ["äpple"]},
+            {q: "Translate 'apple' to Swedish", a: ["äpple", "epple"]},
             {q: "Translate 'water' to Swedish", a: ["vatten"]},
             {q: "Translate 'book' to Swedish", a: ["bok"]},
             {q: "Translate 'sun' to Swedish", a: ["sol"]},
             {q: "Translate 'school' to Swedish", a: ["skola"]},
             {q: "Translate 'car' to Swedish", a: ["bil"]},
-            {q: "Translate 'tree' to Swedish", a: ["träd"]},
+            {q: "Translate 'tree' to Swedish", a: ["träd", "trad"]},
         ],
         tt: [ // Татарский
             {q: "Translate 'hi' to Tatar", a: ["сәлам", "салам"]},
-            {q: "Translate 'cat' to Tatar", a: ["мәче"]},
+            {q: "Translate 'cat' to Tatar", a: ["мәче", "мэче"]},
             {q: "Translate 'dog' to Tatar", a: ["эт"]},
             {q: "Translate 'water' to Tatar", a: ["су"]},
             {q: "Translate 'book' to Tatar", a: ["китап"]},
             {q: "Translate 'sun' to Tatar", a: ["кояш"]},
-            {q: "Translate 'school' to Tatar", a: ["мәктәп"]},
+            {q: "Translate 'school' to Tatar", a: ["мәктәп", "мектеп"]},
             {q: "Translate 'car' to Tatar", a: ["машина"]},
             {q: "Translate 'tree' to Tatar", a: ["агач"]},
             {q: "Translate 'apple' to Tatar", a: ["алма"]},
@@ -134,21 +143,22 @@ document.addEventListener('DOMContentLoaded', () => {
             {q: "Translate 'tree' to Belarusian", a: ["дрэва"]},
             {q: "Translate 'apple' to Belarusian", a: ["яблык"]},
             {q: "Translate 'friend' to Belarusian", a: ["сябар"]},
+            {q: "Translate 'hi' to Belarusian", a: ["прывітанне", "прывiтанне"]},
         ],
         hi: [ // Хинди
             {q: "Translate 'house' to Hindi", a: ["ghar", "घर"]},
             {q: "Translate 'cat' to Hindi", a: ["billee", "बिल्ली"]},
             {q: "Translate 'dog' to Hindi", a: ["kutta", "कुत्ता"]},
             {q: "Translate 'water' to Hindi", a: ["pani", "पानी"]},
-            {q: "Translate 'book' to Hindi", a: ["kitaab", "किताब"]},
+            {q: "Translate 'book' to Hindi", a: ["kitaab", "किताब", "kitab"]},
             {q: "Translate 'sun' to Hindi", a: ["sooraj", "सूरज"]},
             {q: "Translate 'school' to Hindi", a: ["vidyaalay", "विद्यालय"]},
-            {q: "Translate 'car' to Hindi", a: ["kaar", "कार"]},
+            {q: "Translate 'car' to Hindi", a: ["kaar", "कार", "kar"]},
             {q: "Translate 'tree' to Hindi", a: ["ped", "पेड़"]},
             {q: "Translate 'apple' to Hindi", a: ["seb", "सेब"]},
             {q: "Translate 'friend' to Hindi", a: ["dost", "दोस्त"]},
         ],
-        sa: [
+        sa: [ // Арабский
             { q: "Translate 'hello' to Arabic", a: ["marhaba", "marhaban", "مرحبا", "مرحباً", "مرحبًا", "mrhban", "مرحب"] },
             { q: "Translate 'house' to Arabic", a: ["bayt", "بيت"] },
             { q: "Translate 'cat' to Arabic", a: ["qit", "قط"] },
@@ -161,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Translate 'apple' to Arabic", a: ["tuffah", "تفاح"] },
             { q: "Translate 'friend' to Arabic", a: ["sadiq", "صديق"] }
         ],
-        pt: [
+        pt: [ // Португальский
             { q: "Translate 'hello' to Portuguese", a: ["olá", "ola", "oi"] },
             { q: "Translate 'house' to Portuguese", a: ["casa"] },
             { q: "Translate 'cat' to Portuguese", a: ["gato"] },
@@ -174,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Translate 'apple' to Portuguese", a: ["maçã", "maca"] },
             { q: "Translate 'friend' to Portuguese", a: ["amigo", "amiga"] }
         ],
-        zh: [
+        zh: [ // Китайский
             { q: "Translate 'hello' to Chinese", a: ["ni hao", "nihao", "你好"] },
             { q: "Translate 'house' to Chinese", a: ["fangzi", "房子"] },
             { q: "Translate 'cat' to Chinese", a: ["mao", "猫"] },
@@ -187,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Translate 'apple' to Chinese", a: ["pingguo", "苹果"] },
             { q: "Translate 'friend' to Chinese", a: ["pengyou", "朋友"] }
         ],
-        de: [
+        de: [  // Немецкий
             { q: "Translate 'hello' to German", a: ["hallo", "guten tag"] },
             { q: "Translate 'house' to German", a: ["haus"] },
             { q: "Translate 'cat' to German", a: ["katze"] },
@@ -205,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Translate 'train' to German", a: ["zug"] }
 
         ],
-        ja: [
+        ja: [ // Японский
             { q: "Translate 'hello' to Japanese", a: ["konnichiwa", "こんにちは"] },
             { q: "Translate 'house' to Japanese", a: ["ie", "uchi", "家"] },
             { q: "Translate 'cat' to Japanese", a: ["neko", "猫"] },
@@ -218,18 +228,18 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Translate 'apple' to Japanese", a: ["ringo", "りんご"] },
             { q: "Translate 'friend' to Japanese", a: ["tomodachi", "友達"] }
         ],
-        pl: [
+        pl: [ // Польский
             { q: "Translate 'shop' to Polish", a: ["Sklep"] },
             { q: "Translate 'fruits' to Polish", a: ["Owoce"] },
-            { q: "Translate 'forget' to Polish", a: ["Zapomnieć", "zapom-nyech", "zapomnyech"] },
+            { q: "Translate 'forget' to Polish", a: ["Zapomnieć", "zapom-nyech", "zapomnyech", "zapomniech"] },
             { q: "Translate 'carpet' to Polish", a: ["Dywan"] },
             { q: "Translate 'book' to Polish", a: ["książka", "kshonshka"] },
             { q: "Translate 'sun' to Polish", a: ["słońce", "swon-tse", "swontse"] },
             { q: "Translate 'school' to Polish", a: ["szkoła", "shkowa"] },
             { q: "Translate 'car' to Polish", a: ["samochód", "samokhood"] },
-            { q: "Translate 'tree' to Polish", a: ["drzewo"] },
-            { q: "Translate 'apple' to Polish", a: ["jabłko", "yablko"] },
-            { q: "Translate 'friend' to Polish", a: ["przyjaciel"] }
+            { q: "Translate 'tree' to Polish", a: ["drzewo", "dzhevo"] },
+            { q: "Translate 'apple' to Polish", a: ["jabłko", "yablko", "yabvko"] },
+            { q: "Translate 'friend' to Polish", a: ["przyjaciel", "pshizhyatsyel"] }
         ]
 
 
