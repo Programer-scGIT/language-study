@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let score = 0;
     let mistakes = [];
+    let isWaitingForCorrection = false;
+
 
     // ================== ВОПРОСЫ ==================
     const questionsDB = {
@@ -432,6 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const q = currentQuestions[currentIndex];
 
 
+
         quizScreen.classList.remove('question-animate');
         void quizScreen.offsetWidth;
         quizScreen.classList.add('question-animate');
@@ -457,38 +460,82 @@ document.addEventListener('DOMContentLoaded', () => {
         const userAnswer = textInput.value.trim().toLowerCase();
         const isCorrect = q.a.some(ans => ans.toLowerCase() === userAnswer);
 
+        // Если пользователь исправляет ошибку
+        if (isWaitingForCorrection) {
+            if (isCorrect) {
+                // Если со второго раза написал правильно!
+                isWaitingForCorrection = false;
+                submitBtn.textContent = "Ответить";
+
+                resultEl.innerHTML = `<span style="color: var(--green);">✅ Отлично! Ошибка исправлена! \ Error fixed!</span>`;
+                spawnConfetti(20);
+                playConfettiSound();
+
+                currentIndex++;
+
+
+                setTimeout(() => {
+                    if (currentIndex < currentQuestions.length) {
+                        currentEl.textContent = currentIndex + 1;
+                        showQuestion();
+                    } else {
+                        showFinalResult();
+                        const percent = Math.round((score / currentQuestions.length) * 100);
+                        if (percent === 100) {
+                            spawnConfetti(100);
+                            playConfettiSound();
+                        }
+                    }
+                }, 2000);
+
+            } else {
+                resultEl.innerHTML = `<span style="color: #ef4444;">❌ Опять неверно! Посмотри на подсказку и перепиши: <b>${q.a}</b></span>`;
+                textInput.value = '';
+                textInput.focus();
+            }
+            return;
+        }
+
+
         if (isCorrect) {
             score++;
             resultEl.innerHTML = `<span style="color: var(--green);">✅ Правильно! / true! </span>`;
             spawnConfetti(30);
             playConfettiSound();
-        } else {
-            mistakes.push({
-                question: q.q,
-                correct: q.a[0],
-                user: userAnswer || "пусто\empty"
-            });
-            resultEl.innerHTML = `<span style="color: #ef4444;">❌ Неправильно / false <br>Правильно: <b>${q.a[0]}</b></span>`;
-        }
 
-        currentIndex++;
-
-        if (currentIndex < currentQuestions.length) {
+            currentIndex++;
             setTimeout(() => {
-                currentEl.textContent = currentIndex + 1;
-                showQuestion();
-            }, 2000);
-        } else {
-            setTimeout(() => {
-                showFinalResult();
-                const percent = Math.round((score / currentQuestions.length) * 100);
-                if (percent === 100) {
-                    spawnConfetti(100);
-                    playConfettiSound();
+                if (currentIndex < currentQuestions.length) {
+                    currentEl.textContent = currentIndex + 1;
+                    showQuestion();
+                } else {
+                    showFinalResult();
+                    const percent = Math.round((score / currentQuestions.length) * 100);
+                    if (percent === 100) {
+                        spawnConfetti(100);
+                        playConfettiSound();
+                    }
                 }
             }, 2000);
+        } else {
+            // Пользователь ошибся в первый раз
+            mistakes.push({
+                question: q.q,
+                correct: q.a,
+                user: userAnswer || "пусто\\empty"
+            });
+
+            resultEl.innerHTML = `<span style="color: #ef4444;">❌ Неправильно / false <br>Напиши ответ правильно: <b>${q.a}</b></span>`;
+
+            isWaitingForCorrection = true;
+            submitBtn.textContent = "Проверить ошибку";
+
+            textInput.value = '';
+            textInput.focus();
         }
     }
+
+
 
     function showFinalResult() {
         const percent = Math.round((score / currentQuestions.length) * 100);

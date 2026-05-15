@@ -789,5 +789,45 @@ body.modal-open > *:not(#settingsModal) {
     }
 }
 
+/* --- СТИЛИ ДЛЯ РЕЖИМА ИСПРАВЛЕНИЯ ОШИБКИ --- */
+
+/* Плавное покачивание поля ввода при ошибке (эффект тряски) */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.shake-input {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Красивая пульсация для кнопки «Проверить ошибку» */
+@keyframes pulse-orange {
+    0% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(243, 156, 18, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
+}
+
+/* Стили для кнопки, когда нужно исправить ошибку */
+.btn-correction {
+    background-color: #f39c12 !important; /* Оранжевый цвет внимания */
+    animation: pulse-orange 1.5s infinite;
+}
+
+/* Плавное появление сообщений об успехе или ошибке */
+#result span {
+    display: inline-block;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
 
