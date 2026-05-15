@@ -54,6 +54,10 @@
     <!-- ВЫБОР ЯЗЫКА -->
     <section id="startScreen" class="card">
         <h2>Выбери язык для изучения / Choose a language to learn</h2>
+
+        <!-- ПОЛЕ ПОИСКА (НОВАЯ СТРОКА) -->
+        <input type="text" id="langSearch" placeholder="Поиск языка / Search language..." style="width: 100%; max-width: 400px; padding: 12px; margin: 0 auto 20px auto; display: block; border: 2px solid #4CAF50; border-radius: 8px; font-size: 1rem; outline: none; box-sizing: border-box;" autocomplete="off">
+
         <div class="lang-buttons">
             <button class="langBtn" data-lang="ru">🇷🇺 Русский / Russian</button>
             <button class="langBtn" data-lang="en">🇬🇧 Английский / English</button>
@@ -72,6 +76,7 @@
             <button class="langBtn" data-lang="pl">🇵🇱 Польский / Polish</button>
         </div>
     </section>
+
 
     <!-- КВИЗ -->
     <button id="backBtn" style="display: none; background: none; border: none; color: gray; font-size: 1.1rem; font-weight: bold; cursor: pointer; padding: 10px 14px;">

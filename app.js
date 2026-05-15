@@ -636,3 +636,19 @@ function createFireflies() {
 
 
 window.addEventListener('load', createFireflies);
+
+// ЖИВОЙ ПОИСК ЯЗЫКОВ
+document.getElementById('langSearch').addEventListener('input', function(e) {
+    const searchText = e.target.value.toLowerCase(); // Берем текст из поиска маленькими буквами
+    const buttons = document.querySelectorAll('.langBtn'); // Находим все кнопки языков
+
+    buttons.forEach(button => {
+        const buttonText = button.textContent.toLowerCase(); // Берем текст кнопки (например, "русский")
+
+        if (buttonText.includes(searchText)) {
+            button.style.display = 'block'; // Показываем кнопку, если текст совпал
+        } else {
+            button.style.display = 'none';  // Скрываем кнопку, если текст не совпал
+        }
+    });
+});
