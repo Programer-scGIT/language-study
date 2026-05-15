@@ -398,6 +398,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.langBtn').forEach(btn => {
         btn.addEventListener('click', () => {
             currentLang = btn.dataset.lang;
+
+
+            document.getElementById('backBtn').style.display = 'block';
+
             startQuiz();
         });
     });
@@ -416,10 +420,14 @@ document.addEventListener('DOMContentLoaded', () => {
         score = 0;
         mistakes = [];
 
+
+        currentEl.textContent = 1;
         totalEl.textContent = currentQuestions.length;
+
         resultEl.innerHTML = '';
         showQuestion();
     }
+
     function showQuestion() {
         const q = currentQuestions[currentIndex];
 
@@ -543,14 +551,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') checkAnswer();
     });
 
-
     const settingsBtn = document.getElementById('settingsBtn');
-
 
     if (settingsBtn) {
         settingsBtn.onclick = showSettings;
     }
 
+    // ЛОГИКА КНОПКИ НАЗАД (ВСТАВЛЕНО СЮДА)
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            quizScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            backBtn.style.display = 'none';
+
+            textInput.value = '';
+            resultEl.innerHTML = '';
+        });
+    }
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -562,12 +580,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const bgMusic = document.getElementById('bg-music');
 
-
 document.body.addEventListener('click', () => {
     bgMusic.volume = 0.1; // громкость тише
     bgMusic.play().catch(e => console.log("Ошибка воспроизведения фоновой музыки:", e));
 }, { once: true });
-
 
 // ================== ВЫБОР ЯЗЫКА ==================
 document.querySelectorAll('.langBtn').forEach(btn => {
@@ -651,4 +667,5 @@ document.getElementById('langSearch').addEventListener('input', function(e) {
             button.style.display = 'none';  // Скрываем кнопку, если текст не совпал
         }
     });
+
 });
