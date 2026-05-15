@@ -829,5 +829,35 @@ body.modal-open > *:not(#settingsModal) {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+.shake-input {
+    animation: shake 0.3s ease-in-out !important;
+    border: 2px solid #ef4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.8) !important;
+}
+@keyframes pulse-orange {
+    0% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(243, 156, 18, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
+}
+.btn-correction {
+    background: #f39c12 !important;
+    color: white !important;
+    animation: pulse-orange 1.5s infinite !important;
+}
+#result span {
+    display: inline-block;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
 

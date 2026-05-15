@@ -433,7 +433,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showQuestion() {
         const q = currentQuestions[currentIndex];
 
-
+        isWaitingForCorrection = false;
+        submitBtn.textContent = "Ответить";
+        submitBtn.classList.remove('btn-correction');
+        textInput.classList.remove('shake-input');
 
         quizScreen.classList.remove('question-animate');
         void quizScreen.offsetWidth;
@@ -463,16 +466,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Если пользователь исправляет ошибку
         if (isWaitingForCorrection) {
             if (isCorrect) {
-                // Если со второго раза написал правильно!
                 isWaitingForCorrection = false;
                 submitBtn.textContent = "Ответить";
 
-                resultEl.innerHTML = `<span style="color: var(--green);">✅ Отлично! Ошибка исправлена! \ Error fixed!</span>`;
+                resultEl.innerHTML = `<span style="color: var(--green);">✅ Отлично! Ошибка исправлена! \\ Error fixed!</span>`;
                 spawnConfetti(20);
                 playConfettiSound();
 
                 currentIndex++;
-
 
                 setTimeout(() => {
                     if (currentIndex < currentQuestions.length) {
@@ -489,7 +490,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
 
             } else {
-                resultEl.innerHTML = `<span style="color: #ef4444;">❌ Опять неверно! Посмотри на подсказку и перепиши: <b>${q.a}</b></span>`;
+
+                resultEl.innerHTML = `<span style="color: #ef4444;">❌ Опять неверно! Посмотри на подсказку и перепиши. \ Wrong again! Look at the hint and rewrite it.: <b>${q.a[0]}</b></span>`;
+                textInput.classList.remove('shake-input');
+                void textInput.offsetWidth;
+                textInput.classList.add('shake-input');
                 textInput.value = '';
                 textInput.focus();
             }
@@ -518,22 +523,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 2000);
         } else {
-            // Пользователь ошибся в первый раз
+
             mistakes.push({
                 question: q.q,
-                correct: q.a,
+                correct: q.a[0],
                 user: userAnswer || "пусто\\empty"
             });
 
-            resultEl.innerHTML = `<span style="color: #ef4444;">❌ Неправильно / false <br>Напиши ответ правильно: <b>${q.a}</b></span>`;
+            resultEl.innerHTML = `<span style="color: #ef4444;">❌ Неправильно / false <br>Напиши ответ правильно. \ Write the answer correctly: <b>${q.a[0]}</b></span>`;
 
             isWaitingForCorrection = true;
             submitBtn.textContent = "Проверить ошибку";
+
+            // Включаем сочные эффекты
+            submitBtn.classList.add('btn-correction');
+            textInput.classList.add('shake-input');
 
             textInput.value = '';
             textInput.focus();
         }
     }
+
 
 
 
