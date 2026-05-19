@@ -1,12 +1,12 @@
 const CACHE_NAME = "language-study-v1";
 
 const urlsToCache = [
-    "./",
-    "./index.html",
-    "./style.css",
-    "./app.js",
-    "./index.js",
-    "./logo.png"
+    "/language-study/",
+    "/language-study/index.html",
+    "/language-study/style.css",
+    "/language-study/app.js",
+    "/language-study/index.js",
+    "/language-study/logo.png"
 ];
 
 self.addEventListener("install", event => {

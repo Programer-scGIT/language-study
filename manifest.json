@@ -3,7 +3,7 @@
   "short_name": "LS",
   "description": "My app for language learning environment ",
 
-  "start_url": "/",
+  "start_url": "/language-study/",
 
   "display": "standalone",
 
