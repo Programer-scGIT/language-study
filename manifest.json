@@ -3,8 +3,8 @@
   "short_name": "LS",
   "description": "Environment for learning a foreign language",
 
-  "start_url": "/language-study/",
-  "scope": "/language-study/",
+  "start_url": "./",
+  "scope": "./",
 
   "display": "standalone",
   "orientation": "portrait",
