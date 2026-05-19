@@ -1,4 +1,17 @@
 {
+  "name": "Language Study",
+  "short_name": "LS",
+  "description": "Environment for learning a foreign language",
+
+  "start_url": "/language-study/",
+  "scope": "/language-study/",
+
+  "display": "standalone",
+  "orientation": "portrait",
+
+  "background_color": "#121212",
+  "theme_color": "#121212",
+
   "icons": [
     {
       "src": "logo 192.png",
