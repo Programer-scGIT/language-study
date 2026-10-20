@@ -8,4 +8,3 @@ Hello, readers! This is a learning environment for languages such as Russian, En
 
 
 ---
-**🌐 [Читать мою статью про Language Study на Хабре\Read my article about Language Study on Habr](https://habr.com/ru/sandbox/284734/)**
